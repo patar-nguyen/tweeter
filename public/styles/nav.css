@@ -4,13 +4,14 @@ nav {
   height: 120px;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
 } 
 
 span.logo {
   font-family: 'Bungee', cursive;
   margin: 1.5em;
   display: flex;
-  align-items: center;
+  align-self: center;
 }
 
 .newTweet {
