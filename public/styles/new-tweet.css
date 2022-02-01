@@ -1,0 +1,25 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  height: 1.5em;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid #000000
+}
+
+div.button {
+  font-family: 'Bungee', cursive;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  color: #FFFFFF;
+  background-color: #4056a1;
+  border: none;
+}
