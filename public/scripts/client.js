@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-const tweetData = [
+/*const tweetData = [
   {
     "user": {
       "name": "Newton",
@@ -23,13 +23,21 @@ const tweetData = [
     },
     "created_at": 1461113959088
   }
-]
+]*/
 
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
     $('#tweets-container').append($tweet);
   }
+}
+
+const loadTweets = function () {
+  $.ajax('/tweets', {method: 'GET'})
+  .then(function (tweets) {
+    console.log('Success: ', tweets);
+    renderTweets(tweets)
+  })
 }
 
 const createTweetElement = function(tweet) {
@@ -56,17 +64,16 @@ let $tweet = `
   return $tweet;
 }
 
-renderTweets(tweetData);
-
-
-
 $( "#submit" ).submit(function( event ) {
   console.log("Form submitted");
   event.preventDefault();
   const param = $(this).serialize();
   console.log(param);
   $.post('/tweets', param).then(() => {
-
   })
-});});
+});
+
+loadTweets();
+
+});
 
