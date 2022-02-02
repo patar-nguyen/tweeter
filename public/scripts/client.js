@@ -58,5 +58,15 @@ let $tweet = `
 
 renderTweets(tweetData);
 
-});
+
+
+$( "#submit" ).submit(function( event ) {
+  console.log("Form submitted");
+  event.preventDefault();
+  const param = $(this).serialize();
+  console.log(param);
+  $.post('/tweets', param).then(() => {
+
+  })
+});});
 
