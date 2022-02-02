@@ -69,6 +69,7 @@ article.tweets footer {
   padding-right: 1.5em;
 
 }
+
 span.profile {
   width: 200px;
   display: flex;
@@ -77,7 +78,7 @@ span.profile {
 }
 
 span img {
-  width: 40px;
+  width: 50px;
 }
 
 div.icons {
