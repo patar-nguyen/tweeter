@@ -71,14 +71,18 @@ article.tweets footer {
 }
 
 span.profile {
-  width: 200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-span img {
+img.profile-pic {
   width: 50px;
+  padding-right: 10px;
+}
+
+span.user {
+  color: #bcc2da;
 }
 
 div.icons {
