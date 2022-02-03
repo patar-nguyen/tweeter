@@ -67,13 +67,22 @@ let $tweet = `
 $( "#submit" ).submit(function( event ) {
   console.log("Form submitted");
   event.preventDefault();
-  const param = $(this).serialize();
-  console.log(param);
-  $.post('/tweets', param).then(() => {
-  })
+
+  let characterCount = $("form").find("textarea").val().length;
+  if (characterCount > 140) {
+    alert("Character count exceeds limit");
+  } else if (characterCount < 1) {
+    alert("Input box cannot be empty");
+  } else {
+    const param = $(this).serialize();
+    console.log(param);
+    $.post('/tweets', param).then(() => {
+    })
+  }
 });
 
 loadTweets();
+
 
 });
 
