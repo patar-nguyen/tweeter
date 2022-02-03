@@ -1,34 +1,10 @@
 $(document).ready(function() {
 
-/*const tweetData = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]*/
-
 const renderTweets = function(tweets) {
+  $('#tweets-container').empty();
   for (let tweet of tweets) {
     const $tweet = createTweetElement(tweet);
-    $('#tweets-container').append($tweet);
+    $('#tweets-container').prepend($tweet);
   }
 }
 
@@ -74,15 +50,19 @@ $( "#submit" ).submit(function( event ) {
   } else if (characterCount < 1) {
     alert("Input box cannot be empty");
   } else {
-    const param = $(this).serialize();
-    console.log(param);
-    $.post('/tweets', param).then(() => {
-    })
-  }
+    $.ajax({
+      url: "/tweets",
+      data: $(this).serialize(),
+      method: 'post',
+      success: function () {
+        $("form").find("textarea").val('');
+        loadTweets();
+      }
+    });
+  };
 });
 
 loadTweets();
-
 
 });
 
