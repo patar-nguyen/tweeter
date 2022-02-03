@@ -2,7 +2,7 @@
 
 Tweeter is a simple, single-page Twitter clone using HTML, CSS, JS, jQuery and AJAX.
 
-##Screenshots
+# Screenshots
 
 ![Screenshot of website in fullscreen](https://github.com/patar-nguyen/tweeter/blob/master/public/images/Tweeter1.jpg?raw=true)
 
