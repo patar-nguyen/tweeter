@@ -21,84 +21,32 @@ body {
   font-size: 24px;
 }
 
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+
+  body header {
+    margin: 3em;
+    width: 30%;
+    margin-top: 5em;
+
+  }
+  
+  .container {
+    margin-top: 90px;
+    width: 60%;
+    float: right;
+  }
+}
+
 main {
   color: #545149;
   padding-left: 5%;
   padding-right: 5%;
-}
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
-
-article.tweets {
-  border: 3px solid #545149;
-  margin-bottom: 1.5em;
-}
-
-article.tweets:hover {
-  box-shadow: 10px 5px 5px #4056a1;
-} 
-
-article.tweets header {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 96%;
-  height: 40px;
-  margin: 1em;
-  background-image: none;
-  background-color: #f4f1ec;
-}
-
-span.text {
-  margin-left: 1.5em;
-  margin-right: 1.5em;
-}
-
-article.tweets footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 3px solid #545149;
-  margin: 1em;
-  font-size: 15px;
-  padding-top: 0.5em;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-
-}
-
-span.profile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-img.profile-pic {
-  width: 50px;
-  padding-right: 10px;
-}
-
-span.user {
-  color: #bcc2da;
-}
-
-div.icons {
-  color: #4056A1
-}
-
-.fa-flag:hover{
-  color:red;
-}
-
-.fa-retweet:hover{
-  color:red;
-}
-
-.fa-heart:hover{
-  color:red;
 }
 
 

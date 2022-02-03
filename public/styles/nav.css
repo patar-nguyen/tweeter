@@ -25,7 +25,7 @@ span.logo {
 
 }
 
-div.newTweet i {
+.fa-angles-down {
   display: flex;
   align-self: center;
   color: red;
