@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+  $("#warning").hide()
+
+//Loops through tweets and renders them on the top of the list
 const renderTweets = function(tweets) {
   $('#tweets-container').empty();
   for (let tweet of tweets) {
@@ -7,7 +10,7 @@ const renderTweets = function(tweets) {
     $('#tweets-container').prepend($tweet);
   }
 }
-
+//Gets the tweets, loads it, and renders it on screen
 const loadTweets = function () {
   $.ajax('/tweets', {method: 'GET'})
   .then(function (tweets) {
@@ -15,13 +18,14 @@ const loadTweets = function () {
     renderTweets(tweets)
   })
 }
-
+//Preventing cross-site scripting (XSS) attacks with escape
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
+//Creating the html and passing in values
 const createTweetElement = function(tweet) {
 let $tweet = `
   <article class="tweets">
@@ -46,21 +50,24 @@ let $tweet = `
   return $tweet;
 }
 
-$( "#submit" ).submit(function( event ) {
-  console.log("Form submitted");
-  event.preventDefault();
+//Handling ajax post request submit and form validation
+$("#submit").submit(function(event) {
 
-  let characterCount = $("form").find("textarea").val().length;
-  if (characterCount > 140) {
-    alert("Character count exceeds limit");
-  } else if (characterCount < 1) {
-    alert("Input box cannot be empty");
+  event.preventDefault();
+  $("#warning").hide()
+
+  let characterCount = $("form").find("textarea").val();
+
+  if(characterCount.length > 140) {
+    return $("#warning").text("Tweet cannot exceed character limit!").slideDown(400);
+  } else if (characterCount.length === null || characterCount.length === 0 || characterCount.trim() === "") {
+    return $("#warning").text("Tweet cannot be empty!").slideDown(400);
   } else {
     $.ajax({
       url: "/tweets",
-      data: $(this).serialize(),
+      data: $(this).serialize(), 
       method: 'post',
-      success: function () {
+      success: function() {
         $("form").find("textarea").val('');
         loadTweets();
       }
